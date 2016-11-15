@@ -1,0 +1,19 @@
+{
+  "name": "g",
+  "version": "1.0.0",
+  "description": "Graph visualization of Djisktra",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gatesyp/combinatorics-final.git"
+  },
+  "author": "Istvan Gates",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gatesyp/combinatorics-final/issues"
+  },
+  "homepage": "https://github.com/gatesyp/combinatorics-final#readme"
+}
