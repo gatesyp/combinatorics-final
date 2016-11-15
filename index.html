@@ -1,3 +1,7 @@
+<!doctype html>
+
+<html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,69 +23,75 @@
     <script type="text/javascript" src="node_modules/vis/vis.js"></script>
     <link href="node_modules/vis/vis-network.min.css" rel="stylesheet" type="text/css" />
 
-    <!--
     <style type="text/css">
         #mynetwork {
-            width: 600px;
-            height: 400px;
+            width: 900px;
+            height: 600px;
             border: 1px solid lightgray;
         }
+        
+        html {
+            min-height: 100%;
+            /* make sure it is at least as tall as the viewport */
+            position: relative;
+        }
+        
+        body {
+            height: 100%;
+            /* force the BODY element to match the height of the HTML element */
+        }
     </style>
--->
 </head>
 
 <body>
 
-    <h1>Djisktra Algo Visualizer </h1>
-    <h2>Generate your graph:</h2>
     <div class="row">
-        <form>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" value="Min # Nodes" name="minNodes">
-            </div>
-            <div class="col-xs-2">
-                <form>
+        <div class="col-md-12">
+            <form>
+                <div class="col-xs-2">
                     <input type="text" class="form-control" value="Min # Nodes" name="minNodes">
-                </form>
-            </div>
-            <div class="col-xs-2">
-                <form>
-                    <input type="text" class="form-control" value="Min # Nodes" name="minNodes">
-                </form>
-            </div>
-            <div class="col-xs-2">
-                <form>
-                    <input type="text" class="form-control" value="Min # Nodes" name="minNodes">
-                </form>
-            </div>
-            <div class="col-xs-2">
-                <input class="btn btn-primary" type="submit" value="Generate">
-            </div>
-        </form>
-    </div>
-    <div class="row">
-        <div id="mynetwork" ></div>
-        <div id="distancetable" >
-            <table class="table table-bordered">
-                <thead>
-                    <tr id="title">
-                        <th colspan=3>Distance Table</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>Node A</th>
-                        <th class>Testing</th>
-                        <th>Optional Note</th>
-                    </tr>
-                </tbody>
+                </div>
+                <div class="col-xs-2">
+                    <form>
+                        <input type="text" class="form-control" value="Min # Nodes" name="minNodes">
+                    </form>
+                </div>
+                <div class="col-xs-2">
+                    <form>
+                        <input type="text" class="form-control" value="Min # Nodes" name="minNodes">
+                    </form>
+                </div>
+                <div class="col-xs-2">
+                    <form>
+                        <input type="text" class="form-control" value="Min # Nodes" name="minNodes">
+                    </form>
+                </div>
+                <div class="col-xs-2">
+                    <input class="btn btn-primary" type="submit" value="Generate">
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-md-6" id="mynetwork"></div>
+                <div class="col-md-6">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr id="title" class="warning">
+                                <th colspan=3>Distance Table</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Node A</th>
+                                <th class>Node B</th>
+                                <th>Best Sequence</th>
+                            </tr>
+                        </tbody>
 
-            </table>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-
-
-
 
     <!--Javascript to generate graph-->
     <script type="text/javascript">
@@ -140,3 +150,5 @@
     </script>
 
 </body>
+
+</html>
