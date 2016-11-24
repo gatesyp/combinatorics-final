@@ -49,25 +49,25 @@
         <div class="col-md-12">
             <form>
                 <div class="col-xs-2">
-                    <input type="text" class="form-control" value="Min # Nodes" name="minNodes">
+                    <input type="number" min="1" class="form-control" placeholder="Min # Nodes" name="minNodes" id="minNodes">
                 </div>
                 <div class="col-xs-2">
                     <form>
-                        <input type="text" class="form-control" value="Min # Nodes" name="minNodes">
+                        <input type="number" min="1" class="form-control" placeholder="Max # Nodes" name="maxNodes" id="maxNodes">
                     </form>
                 </div>
                 <div class="col-xs-2">
                     <form>
-                        <input type="text" class="form-control" value="Min # Nodes" name="minNodes">
+                        <input type="number" class="form-control" placeholder="Min # Edges" name="minEdges" id="minEdges">
                     </form>
                 </div>
                 <div class="col-xs-2">
                     <form>
-                        <input type="text" class="form-control" value="Min # Nodes" name="minNodes">
+                        <input type="number" class="form-control" placeholder="Max # Edges" name="maxEdges" id="maxEdges">
                     </form>
                 </div>
                 <div class="col-xs-2">
-                    <input class="btn btn-primary" type="submit" value="Generate">
+                    <input class="btn btn-primary" type="submit" placeholder="Generate" id="genGraph">
                 </div>
             </form>
             <div class="row">
@@ -95,58 +95,54 @@
 
     <!--Javascript to generate graph-->
     <script type="text/javascript">
-        // create an array with nodes
-        var nodes = new vis.DataSet([
-            {
-                id: 1,
-                label: 'Node 1'
-                },
-            {
-                id: 2,
-                label: 'Node 2'
-                },
-            {
-                id: 3,
-                label: 'Node 3'
-                },
-            {
-                id: 4,
-                label: 'Node 4'
-                },
-            {
-                id: 5,
-                label: 'Node 5'
-                }
-  ]);
+        function randomIntFromInterval(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
 
-        // create an array with edges
-        var edges = new vis.DataSet([
-            {
-                from: 1,
-                to: 3
-                },
-            {
-                from: 1,
-                to: 2
-                },
-            {
-                from: 2,
-                to: 4
-                },
-            {
-                from: 2,
-                to: 5
-                }
-  ]);
+        $("#genGraph").click(function () {
+            
+            var minNodes = $("#minNodes").val();
+            var maxNodes = $("#maxNodes").val();
+            var minEdges = $("#minEdges").val();
+            var maxEdges = $("#maxEdges").val();
 
-        // create a network
-        var container = document.getElementById('mynetwork');
-        var data = {
-            nodes: nodes,
-            edges: edges
-        };
-        var options = {};
-        var network = new vis.Network(container, data, options);
+            var randNodes = randomIntFromInterval(parseFloat(minNodes), parseFloat(maxNodes));
+            var randEdge = randomIntFromInterval(parseFloat(minEdges), parseFloat(maxEdges));
+
+            var randNodeArray = [];
+            var randEdgeArray = [];
+            
+            // generate nodes, edges
+            for (var i = 0; i < randNodes; i++) {
+                var obj = {
+                    id: i,
+                    label: "Node " + i
+                };
+                randNodeArray.push(obj);
+            }
+
+            for (var i = 0; i < randEdge; i++) {
+                var obj = {
+                    from: randomIntFromInterval(minNodes, maxNodes),
+                    to: randomIntFromInterval(minNodes, maxNodes),
+                    label: randomIntFromInterval(1, 100)
+                };
+                randEdgeArray.push(obj);
+            }
+
+            // create an array for nodes, edges
+            var nodes = new vis.DataSet(randNodeArray);
+            var edges = new vis.DataSet(randEdgeArray);
+
+            // create a network
+            var container = document.getElementById('mynetwork');
+            var data = {
+                nodes: nodes,
+                edges: edges
+            };
+            var options = {};
+            var network = new vis.Network(container, data, options);
+        });
     </script>
 
 </body>
