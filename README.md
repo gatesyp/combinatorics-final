@@ -5,6 +5,9 @@ Visualization of Djisktra algorithm
 npm init
 npm install vis
 
+## Note
+10, 20, 30, 40 seems to generate a good graph
+
 ## TODO
 - implement Djisktra using JS
 - update Distance Table dynamically, for each iteration
